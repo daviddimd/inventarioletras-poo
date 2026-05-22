@@ -36,11 +36,11 @@ public class InventarioLetras {
         }
 
         public int size() {
-            return 0;
+            return this.totalCount;
         }
 
         public boolean isEmpty() {
-            return false;
+            return this.nonZeroCount == 0;
         }
 
         public String toString() {
