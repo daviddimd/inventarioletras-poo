@@ -32,7 +32,14 @@ public class InventarioLetras {
         }
 
         public int get(char letra) {
-            return 0;
+            char letraMinuscula = Character.toLowerCase(letra);
+
+            if(letraMinuscula < 'a' || letraMinuscula > 'z'){
+                throw new IllegalArgumentException("El caracter'" + letra + "'no es una letra valida del alfabeto ingles");
+
+            }
+            int indice = letraMinuscula - 'a';
+            return this.contadores[indice];
         }
 
         public int size() {
