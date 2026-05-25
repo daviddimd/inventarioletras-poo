@@ -92,11 +92,34 @@ public class InventarioLetras {
 
 
         public String encriptarPalabra(String palabra, int desplazamiento) {
-            return null;
+            if (palabra == null) {
+                return null;
+            }
+
+            StringBuilder resultado = new StringBuilder();
+            for (int i = 0; i < palabra.length(); i++) {
+                char letraOriginal = palabra.charAt(i);
+                char letraEncriptada = encriptarCesar(letraOriginal);
+                resultado.append(letraEncriptada);
+            }
+
+            return resultado.toString();
         }
 
         public String desencriptarPalabra(String palabra, int desplazamiento) {
-            return null;
+            if (palabra == null) {
+                return null;
+            }
+
+            StringBuilder resultado = new StringBuilder();
+            for (int i = 0; i < palabra.length(); i++) {
+                char letraOriginal = palabra.charAt(i);
+                char letraDesencriptada = desencriptarCesar(letraOriginal);
+                resultado.append(letraDesencriptada);
+            }
+
+            return resultado.toString();
+        }
         }
 
         public void set(char letra, int valor) {
