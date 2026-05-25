@@ -148,14 +148,75 @@ public class InventarioLetras {
         }
 
         public InventarioLetras add(InventarioLetras otro) {
-            return null;
+            if (otro == null) {
+                return null;
+            }
+
+            InventarioLetras nuevoInventario = new InventarioLetras("");
+
+            for (int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                int suma = this.contadores[i] + otro.contadores[i];
+                nuevoInventario.contadores[i] = suma;
+            }
+
+            nuevoInventario.totalCount = this.totalCount + otro.totalCount;
+
+            for (int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                if (nuevoInventario.contadores[i] > 0) {
+                    nuevoInventario.nonZeroCount++;
+                }
+            }
+
+            return nuevoInventario;
         }
 
         public InventarioLetras amplifies(int n) {
-            return null;
+            InventarioLetras nuevoInventario = new InventarioLetras("");
+
+            if (n <= 0) {
+                return nuevoInventario;
+            }
+
+            for (int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                nuevoInventario.contadores[i] = this.contadores[i] * n;
+            }
+
+            nuevoInventario.totalCount = this.totalCount * n;
+
+            for (int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                if (nuevoInventario.contadores[i] > 0) {
+                    nuevoInventario.nonZeroCount++;
+                }
+            }
+
+            return nuevoInventario;
         }
 
         public InventarioLetras subtract(InventarioLetras otro) {
-            return null;
+            if (otro == null) {
+                return null;
+            }
+
+            InventarioLetras nuevoInventario = new InventarioLetras("");
+
+            for (int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                int resta = this.contadores[i] - otro.contadores[i];
+
+                if (resta < 0) {
+                    return null;
+                }
+
+                nuevoInventario.contadores[i] = resta;
+            }
+
+            nuevoInventario.totalCount = this.totalCount - otro.totalCount;
+
+            for (int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                if (nuevoInventario.contadores[i] > 0) {
+                    nuevoInventario.nonZeroCount++;
+                }
+            }
+
+            return nuevoInventario;
         }
     }
