@@ -51,16 +51,45 @@ public class InventarioLetras {
         }
 
         public String toString() {
-            return null;
+            StringBuilder resultado = new StringBuilder("[");
+
+            for(int i = 0; i < ABECEDARIO_TAMANIO; i++) {
+                int cantidad = this.contadores[i];
+
+                for(int j = 0; j < cantidad; j++) {
+                    char letra = (char) ('a' + i);
+                    resultado.append(letra);
+                }
+            }
+            resultado.append("]");
+            return resultado.toString();
         }
 
         public char encriptarCesar(char letra) {
-            return ' ';
+            char letraMinuscula = Character.toLowerCase(letra);
+            if (letraMinuscula < 'a' || letraMinuscula > 'z') {
+                return letra;
+            }
+            int posicionOriginal = letraMinuscula - 'a';
+            int nuevaPosicion = (posicionOriginal + 3) % ABECEDARIO_TAMANIO;
+
+            return (char) ('a' + nuevaPosicion);
         }
 
+
         public char desencriptarCesar(char letra) {
-            return ' ';
+            char letraMinuscula = Character.toLowerCase(letra);
+
+            if (letraMinuscula < 'a' || letraMinuscula > 'z') {
+                return letra;
+            }
+
+            int posicionOriginal = letraMinuscula - 'a';
+            int nuevaPosicion = (posicionOriginal - 3 + ABECEDARIO_TAMANIO) % ABECEDARIO_TAMANIO;
+
+            return (char) ('a' + nuevaPosicion);
         }
+
 
         public String encriptarPalabra(String palabra, int desplazamiento) {
             return null;
