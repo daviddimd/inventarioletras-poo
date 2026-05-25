@@ -1,15 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        InventarioLetras inv = new InventarioLetras("Hola Mundo");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.println("size: " + inv.size());
+        System.out.println("isEmpty: " + inv.isEmpty());
+        System.out.println("get('o'): " + inv.get('o'));
+        System.out.println(inv);
+
+        System.out.println(inv.encriptarCesar('a'));
+        System.out.println(inv.encriptarPalabra("play", 3));
+
+        InventarioLetras inv1 = new InventarioLetras("Alan Turing");
+        InventarioLetras inv2 = new InventarioLetras("Ada Lovelace");
+        InventarioLetras suma = inv1.add(inv2);
+        System.out.println("Suma: " + suma);
     }
 }
