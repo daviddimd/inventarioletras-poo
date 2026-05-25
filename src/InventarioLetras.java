@@ -120,9 +120,31 @@ public class InventarioLetras {
 
             return resultado.toString();
         }
-        }
+
 
         public void set(char letra, int valor) {
+            char letraMinuscula = Character.toLowerCase(letra);
+
+            if (letraMinuscula < 'a' || letraMinuscula > 'z') {
+                throw new IllegalArgumentException("Carácter no alfabético.");
+            }
+
+            if (valor < 0) {
+                throw new IllegalArgumentException("El valor no puede ser negativo.");
+            }
+
+            int indice = letraMinuscula - 'a';
+            int valorAnterior = this.contadores[indice];
+
+            this.contadores[indice] = valor;
+
+            this.totalCount = this.totalCount - valorAnterior + valor;
+
+            if (valorAnterior == 0 && valor > 0) {
+                this.nonZeroCount++;
+            } else if (valorAnterior > 0 && valor == 0) {
+                this.nonZeroCount--;
+            }
         }
 
         public InventarioLetras add(InventarioLetras otro) {
